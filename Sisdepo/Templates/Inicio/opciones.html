@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Sistema de denuncias policiales." />
+	<title>SISDEPO | SISTEMA DE DENUNCIAS POLICIALES</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.min.opciones.css" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/opciones.css" />
+</head>
+<body>
+	<header>
+		<p id="bienvenida">Bienvenido: <span>{{user.username|capfirst}}</span></p>
+		<p id="cerrar_sesion"><a href="/cerrar/">Cerrar Sesión</a></p>
+	</header>
+  	<section>
+		<div>
+			<h2>BUSCAR DENUNCIAS</h2>
+			<i class="fa fa-search"></i>
+			<a href="/denunciado/buscar/">ENTRAR</a>
+		</div><!--
+		--><div>
+			<h2>NOTIFICACIONES</h2>
+			<i class="fa fa-envelope-o"></i>
+			<a href="">ENTRAR</a>
+		</div><!--
+		--><div>
+			<h2>ADMINISTRADOR</h2>
+			<i class="fa fa-user"></i>
+			<a href="/admin/">ENTRAR</a>
+		</div>
+  	</section>
+	<footer>
+		<p>Copyright &copy; <a  href="" title="SISDEPO">SISDEPO</a> - 2015. Todos los derechos reservados.</p>
+	</footer>
+	<script src="{{STATIC_URL}}js/opciones.js"></script>
+</body>
+</html>

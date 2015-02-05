@@ -1,0 +1,426 @@
+body
+{
+	margin: 0px;
+}
+h1
+{
+	font-size: 14pt;
+	color: rgb(41, 3, 125);
+	font-family: arial;
+	margin-left: 20px;
+}
+a
+{
+	text-decoration: none;
+}
+header *
+{
+	display: inline-block;
+}
+section
+{
+	width: 100%;
+	height: 540px;
+	display: block;
+	position: absolute;
+}
+section article:first-child
+{
+	width: 75%;
+	height: 540px;
+}
+section article
+{
+	display: inline-table !important;
+	float: left;
+	vertical-align: top;
+}
+section article:last-child
+{
+	width: 20%;
+	margin-right: 5%;
+	height: 547px;
+}
+.nav
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	margin-right: 20px;
+}
+.nav li
+{
+	display: inline-block;
+}
+.nav li a
+{
+	color: #676767;
+	border-right:1px solid #676767;
+	padding:0px 8px;
+	font-size: 11pt;
+}
+a:hover,#form_login a:hover
+{
+	text-decoration: underline;
+}
+#nav_principal
+{
+	float: right;
+}
+#nav_principal li:first-child a
+{
+	padding-left: 20px;
+	background-image: url("../img/casa.png");
+	background-repeat: no-repeat;
+}
+.nav li:last-child a
+{
+	border-width: 0px;
+	padding-right: 0px;
+}
+#nav_footer
+{
+	text-align: center;
+}
+#nav_footer
+{
+	position: absolute;
+	height: 30px;
+	left: 40%;
+}
+#nav_footer ul li a
+{
+	color:#198fff;
+}
+section
+{
+	background-color: #f7f7f9;
+}
+h2
+{
+	font-family: arial;
+	font-size: 18pt;
+	font-weight: bold;
+	margin-left: 100px;
+	padding-top: 20px;
+}
+section article:first-child *
+{
+	display: inline-block;
+}
+#policia
+{
+	width: 390px;
+	margin-top: 30px;
+	margin-left: 80px;
+}
+#descripcion
+{
+	color:rgb(133, 106, 173);
+	font-family: sans-serif;
+	width: 420px;
+	font-size: 15pt;
+	position: relative;
+	top: -300px;
+	left: -25px;
+	word-spacing: 1.87px;
+	text-align: justify;
+	margin: 0px;
+}
+footer
+{
+	/*border-top: 1px solid rgba(73,15,118,0.35);*/
+	text-align: center;
+	font-size: .606em;
+	background: #fff;
+	width: 100%;
+	height: 37px;
+	padding-top: 10px;
+	position: relative;
+	top: 540px;
+}
+#form_login
+{
+	border: 2px solid rgba(153,153,153,0.75);
+	border-radius: 2px;
+	background-color: #fff;
+	width: 100%;
+	padding: 15px;
+	margin-top: 20px;
+	margin-left: -20px;
+}
+#form_login h3
+{
+	font-size: 28pt;
+	color: rgb(41, 3, 125);
+	font-family: arial;
+	text-align: center;
+}
+#form_login input[type="text"],#form_login input[type="password"]
+{
+	font-size: 1em;
+	font-weight: 300;
+	font-style: normal;
+	color: #101010;
+	border: 1px solid #e5e5e5;
+	width: 94%;
+	padding: 3%;
+	margin-bottom: 15px;
+}
+article #form_login #texto1
+{
+	font-family: Helvetica,Verdana;
+	font-size: 13pt;
+}
+#form_login #labelSeguirConectado
+{
+	font-family: Helvetica;
+	color: rgb(155, 152, 152);
+	font-size: 11pt;
+	position: relative;
+	top: -1px;
+}
+#form_login #labelSeguirConectado:hover
+{
+	cursor: pointer
+}
+#form_login input[type="submit"]
+{
+	margin-top: 15px;
+	display: block;
+	font-family: Helvetica;
+	font-weight: 300;
+	color: #fff;
+	font-size: 1.00em!important;
+	padding: .65em 0;
+	border: 0;
+	background-color: #400090;
+	width: 100%;
+}
+#form_login input[type="submit"]:hover
+{
+	background-image: linear-gradient(transparent,rgba(0,0,0,0.15) 75%,rgba(0,0,0,0.40));
+}
+#form_login input[type="button"]
+{
+	margin-top: 15px;
+	display: block;
+	font-family: Helvetica;
+	font-weight: 300;
+	color: #fff;
+	font-size: 1.00em!important;
+	padding: .65em 0;
+	border: 0;
+	background-color: #198eff;
+	width: 100%;
+}
+#form_login input[type="button"]:hover
+{
+	background-image: linear-gradient(transparent,rgba(0,0,0,0.15) 75%,rgba(0,0,0,0.40));
+}
+#form_login a
+{
+	text-decoration: none;
+	color: #198fff;
+	outline: none;
+	display: block;
+	font-family: Helvetica;
+	margin-top: 17px;
+	font-size: 11pt;
+}
+#form_login #noCuenta
+{
+	margin-top: 34px;
+}
+@media (max-width: 1225px) {
+  	h2
+  	{
+		font-size: 15pt;
+  	}
+  	#descripcion
+  	{
+		left: -100px;
+		width: 300px;
+  	}
+}
+@media (max-width: 1100px) {
+	h1
+	{
+		margin-left: 8px;
+	}
+  	h2
+  	{
+		font-size: 15pt;
+		margin-left: 40px;
+  	}
+  	#descripcion
+  	{
+		left: -100px;
+		width: 300px;
+  	}
+  	#policia
+  	{
+  		margin-left: 0px;
+  	}
+	section article:first-child
+	{
+		width: 70%;
+	}
+	section article:last-child
+	{
+		width: 25%;
+	}
+}
+@media (max-width: 1006px) {
+	#descripcion
+	{
+		display: none;
+	}
+	#policia
+	{
+		margin-left: 15%;
+		margin-top: 44px;
+	}
+}
+@media (max-width: 940px) {
+	section article:first-child
+	{
+		width: 65%;
+	}
+	section article:last-child
+	{
+		width: 30%;
+	}
+	h2
+	{
+		width: 90%;
+	}
+}
+@media (max-width: 774px) {
+	#policia
+	{
+		margin-left: 3%;
+	}
+	section article:first-child
+	{
+		width: 60%;
+	}
+	section article:last-child
+	{
+		width: 35%;
+	}
+	#nav_footer
+	{
+		left: 34%;
+	}
+}
+@media (max-width: 705px) {
+	#policia
+	{
+		margin-left: 0px;
+	}
+}
+@media (max-width: 676px) {
+	section article:first-child
+	{
+		display: none !important;
+	}
+	section article:last-child
+	{
+		width: 60%;
+		margin: 0 20%;
+	}
+}
+@media (max-width: 605px) {
+	section article:first-child
+	{
+		display: none !important;
+	}
+	section article:last-child
+	{
+		width: 60%;
+		margin: 0 20%;
+	}
+	h1
+	{
+		width: 100%;
+		text-align: center;
+		margin-left: 0px;
+	}
+	header
+	{
+		height: 90px;
+	}
+	#nav_principal
+	{
+		float: none;
+		margin-left: 30%;
+		width: 196px;
+	}
+	#nav_footer
+	{
+		left: 30%;
+	}
+}
+@media (max-width: 490px) {
+	#nav_footer
+	{
+		left: 23%;
+	}
+	section article:last-child
+	{
+		width: 80%;
+		margin: 0 10%;
+	}
+	#nav_principal
+	{
+		margin-left: 25%;
+	}
+}
+@media (max-width: 398px) {
+	#nav_footer
+	{
+		left: 18%;
+	}
+	section article:last-child
+	{
+		width: 80%;
+		margin-left: 11%;
+	}
+	#nav_principal
+	{
+		margin-left: 20%;
+	}
+	h1
+	{
+		font-size: 13pt;
+	}
+}
+@media (max-width: 360px) {
+	#nav_footer
+	{
+		left: 14%;
+	}
+	#nav_principal
+	{
+		margin-left: 16%;
+	}
+	h1
+	{
+		font-size: 16pt;
+	}
+	header
+	{
+		height: 120px;
+	}
+}
+@media (max-width: 328px) {
+	#nav_footer
+	{
+		left: 14%;
+	}
+	#nav_principal
+	{
+		margin-left: 10%;
+	}
+}

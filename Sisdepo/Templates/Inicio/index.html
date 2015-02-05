@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Sistema de denuncias policiales." />
+	<title>SISDEPO | SISTEMA DE DENUNCIAS POLICIALES</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/index.css" />
+</head>
+<body>
+	<header>
+		<h1>COMISARIA NACIONAL DEL PERÚ - ICA</h1>
+		<nav id="nav_principal" class="nav">
+			<ul>
+				<li><a href="">SISDEPO</a></li> 
+				<li><a href="">AYUDA</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<article>
+			<h2>BIENVENIDOS AL SISTEMA DE  DENUNCIAS POLICIALES</h2>
+			<img id="policia" src="{{STATIC_URL}}img/policia.png" alt="policia" />
+			<p id="descripcion">Para acceder al Sistema Ud. debera ingresar su código de usuario y contraseña de acceso.</p>
+		</article><!--
+		--><article>
+		{%if user.is_authenticated %}
+	
+		Bienvenido {{user.username|capfirst}}
+		<a href="/cerrar/">salir</a>
+
+		{%else%}
+			<form action="" id="form_login" method='post'>
+				{%csrf_token%}
+				<h3>SISDEPO</h3>
+				<p id="texto1">Ingresar a tu cuenta</p>
+
+				<input title="Ingrese Usuario" required="required" type="text" name="username" placeholder="Nombre de Usuario" />
+				<input title="Ingrese Contraseña" required="required" type="password" name="password" placeholder="Contraseña" />
+
+				<input type="checkbox" name="" id="seguirConectado" />
+				<label for="seguirConectado" id="labelSeguirConectado">Seguir conectado</label>
+				<input type="submit" value="Iniciar Sesión" />
+				<a id="noCuenta" href="">No puedo entrar a mi cuenta</a>
+				<a href="">Ayuda</a>
+				<input type="button" value="Crear Cuenta" />
+			</form>
+		{%endif%}
+		</article>
+	</section>
+	<footer>
+		<nav id="nav_footer" class="nav">
+			<ul>
+				<li><a href="">Condiciones</a></li>
+				<li><a href="">Privacidad</a></li>
+			</ul>
+		</nav>
+	</footer>
+	<script src="{{STATIC_URL}}js/index.js"></script>
+</body>
+</html>

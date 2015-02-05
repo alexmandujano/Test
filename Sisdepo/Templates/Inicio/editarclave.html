@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Sistema de denuncias policiales." />
+	<title>SISDEPO | SISTEMA DE DENUNCIAS POLICIALES</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/editarclave.css" />
+</head>
+<body>
+	Bienvenido {{user.username|capfirst}}
+	necesitamos que cambies tu contraseña... :)
+	<form action="" id="form_nueva_contrasenna" method="post">
+		{%csrf_token%}
+		<h1>SISDEPO</h1>
+		<label for="nueva_contra">Nueva Contraseña</label>
+		<input minlength="6" required="required" type="password" name="pass" id="nueva_contra" />
+		<label for="repetir_nueva_contra">Repetir Nueva Contraseña</label>
+		<input minlength="6"  required="required" type="password" name="rpass" id="repetir_nueva_contra" />
+		<input type="submit" value="Guardar" />
+		<a href="/cerrar/" target="_self"><input type="button" value="Salir" /></a>
+	</form>
+	<script src="{{STATIC_URL}}js/editarclave.js"></script>
+</body>
+</html>

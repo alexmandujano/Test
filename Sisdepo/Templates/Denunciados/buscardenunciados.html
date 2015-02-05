@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SISDEPO | SISTEMA DE DENUNCIAS POLICIALES</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/buscardenunciado.css" />
+	<script src="{{STATIC_URL}}js/buscardenunciado.js"></script>
+</head>
+<body>
+	<header>
+		<p>Bienvenido: Jean</p>
+		<a href="/cerrar/">Cerrar Sesión</a>
+	</header>
+	<section>
+		<article>
+			<form action="/denunciado/buscar/" method='post'>
+				{%csrf_token%}
+				<h2>BUSQUEDA DE DENUNCIADOS</h2>
+				<label for="dni">DNI:</label>
+				<input onkeypress="return validarDNI(event);" type="text" id="dni" name='txtbuscar' />
+				<label for="apellidosNombres">Apellidos y Nombres:</label>
+				<input type="text" id="apellidosNombres" />
+				<input id="buscar" type="submit" value="Buscar" />
+
+			</form>
+		</article><!--
+		--><article>
+			<div id="contenedor">
+				<h2>LISTA DE BUSQUEDA</h2>
+				
+				{%for  denunciado in denunciados %}
+				<a href="{% url "consulta" denunciado.pk %}">
+				<div id="fila">
+				<img src="{{denunciado.traer_url_foto}}">
+				<div id="datos">
+					<p id="datos_apellidos">{{denunciado.NOM_DENUNCIADO}}</p>
+					<p id="datos_dni">DNI: {{denunciado.DNI}}</p>
+				</div>
+				</div>
+				</a>
+				{%endfor%}
+				
+			</div>
+		</article>
+	</section>
+	<footer>
+		<p>Copyright &copy; <a  href="" title="SISDEPO">SISDEPO</a> - 2015. Todos los derechos reservados.</p>
+	</footer>
+</body>
+</html>

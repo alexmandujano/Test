@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SISDEPO | SISTEMA DE DENUNCIAS POLICIALES</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/detalledenunciado.css" />
+</head>
+<body>
+	<header>
+		<p>Bienvenido: Jean</p>
+		<a href="/cerrar/">Cerrar Sesión</a>
+	</header>
+	<section> 
+		<h1>DATOS DENUNCIADOS</h1>
+		<div id="contenedor_imagen">
+			<img id="imagen_principal" src="{{STATIC_URL}}img/foto_perfil_1.jpg" />
+			<div id="contenedor_imagen_pequeno">
+				{% for foto in fotos%}
+				<img src="{{MEDIA_URL}}{{foto.FOTO}}" />
+				{%endfor%}
+			</div>
+		</div>
+		<div id="contenedor_datos">
+			<div id="contenedor_datos_per">
+				<div>
+					<span>CÓDIGO: </span>
+					<p>{{denunciado.COD_DENUNCIADO}}</p>
+				</div>
+				<div>
+					<span>NOMBRES: </span>
+					<p>{{denunciado.NOM_DENUNCIADO}}</p>
+				</div>
+				<div>
+					<span>APELLIDO PATERNO: </span>
+					<p>{{denunciado.APELLIDO_P}}</p>
+				</div>
+				<div>
+					<span>APELLIDO MATERNO: </span>
+					<p>{{denunciado.APELLIDO_M}}</p>
+				</div>
+				<div>
+					<span>EDAD: </span>
+					<p>{{denunciado.EDAD}}</p>
+				</div>
+				<div>
+					<span>DNI: </span>
+					<p>{{denunciado.DNI}}</p>
+				</div>
+				<div>
+					<span>SEXO: </span>
+					<p>{{denunciado.SEXO}}</p>
+				</div>
+				<div>
+					<span>ESTADO CIVIL: </span>
+					<p>{{denunciado.ESTADO_CIV}}</p>
+				</div>
+				<div>
+					<span>LUG. NACIMIENTO: </span>
+					<p>{{denunciado.LUG_NAC}}</p>
+				</div>
+				<div>
+					<span>CARACTERÍSTICAS: </span>
+					<p>{{denunciado.CARACTERISTICAS}}</p>
+				</div>
+				<div>
+					<span>OCUPACIÓN: </span>
+					<p>{{denunciado.OCUPACION}}</p>
+				</div>
+				<div>
+					<span>DIRECCIÓN: </span>
+					<p>{{denunciado.DIRECCION}}</p>
+				</div>
+			</div>
+			<h2>ANTECEDENTES:</h2>
+			<table border="1" id="tabla_antecedentes">
+				<thead>
+					<td>Fecha</td>
+					<td>Policia</td>
+					<td>Tipo de Denuncia</td>
+					<td>Comisaria</td>
+				</thead>
+
+				{%for falta in faltas%}
+				<tr class="tabla_antecedentes_datos">
+					<td>{{falta.FECHA|date:"M d, Y"}}</td>
+					<td>{{falta.NOM_POLICIA}}</td>
+					<td>{{falta.TIPO_FALTA}}</td>
+					<td>{{falta.COMISARIA}}</td>
+				</tr>
+				<tr class="tabla_antecedentes_descripcion">
+					<td colspan="4">
+						{{falta.CONTENIDO}}
+					</td>
+				</tr>
+				{%endfor%}
+
+				{%for delito in delitos%}
+				<tr class="tabla_antecedentes_datos">
+					<td>{{delito.FECHA|date:"M d, Y"}}</td>
+					<td>{{delito.NOM_POLICIA|capfirst}}</td>
+					<td>{{delito.TIPO_DELITO|capfirst}}</td>
+					<td>{{delito.COMISARIA|capfirst}}</td>
+				</tr>
+				<tr class="tabla_antecedentes_descripcion">
+					<td colspan="4">
+						{{delito.CONTENIDO|capfirst}}
+					</td>
+				</tr>
+				{%endfor%}
+
+				{%for acta in actasidentidad%}
+				<tr class="tabla_antecedentes_datos">
+					<td>{{acta.FECHAINI|date:"M d, Y"}}</td>
+					<td>{{acta.NOM_POLICIA|capfirst}}</td>
+					<td>Acta de Identidad</td>
+					<td>{{acta.COMISARIA|capfirst}}</td>
+				</tr>
+				<tr class="tabla_antecedentes_descripcion">
+					<td colspan="4">
+						{{acta.RESULTADOS|capfirst}}
+					</td>
+				</tr>
+				{%endfor%}
+				{%for acta in actasintervencion%}
+				<tr class="tabla_antecedentes_datos">
+					<td>{{acta.FECHA|date:"M d, Y"}}</td>
+					<td>{{acta.NOM_POLICIA|capfirst}}</td>
+					<td>Acta de Intervención</td>
+					<td>{{acta.COMISARIA|capfirst}}</td>
+				</tr>
+				<tr class="tabla_antecedentes_descripcion">
+					<td colspan="4">
+						{{acta.CONTENIDO|capfirst}}
+					</td>
+				</tr>
+				{%endfor%}
+
+		 
+			</table>
+		</div>
+	</section>
+	<footer>
+		<p>Copyright &copy; <a  href="" title="SISDEPO">SISDEPO</a> - 2015. Todos los derechos reservados.</p>
+	</footer>
+	<script src="{{STATIC_URL}}js/jquery-1.4.4.min.js"></script>
+	<script src="{{STATIC_URL}}js/detalledenunciado.js"></script>
+</body>
+</html>

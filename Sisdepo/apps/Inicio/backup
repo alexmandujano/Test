@@ -1,0 +1,131 @@
+from django.shortcuts import render,render_to_response
+from django.contrib.auth.decorators import login_required #cone sto solo se ejecutaran las vistas cuando el user este logueado
+from apps.Agentes_Pnp.models import Agente
+from apps.Denunciante.models import Denunciante
+from django.contrib.auth.models import User	
+from .forms import ChangePass
+from django.template import RequestContext
+import random
+from django.contrib.auth.forms import SetPasswordForm
+
+def Conforme(request):
+	usuario_id=request.user.pk
+	tipo_usuario=request.user.user_type
+	#asignamos que tipo de invitado es si es policia  o si es natural
+	if tipo_usuario=='NAT': Invitado=Denunciante.objects.filter(USUARIO=usuario_id)
+	if tipo_usuario=='PNP': Invitado=Agente.objects.filter(USUARIO=usuario_id)
+	
+	conforme=False #nos ayuda a saber si el usuario ya cambio
+	for a in Invitado:
+		conforme= a.CONFORME #nota: ambos modelos tienen el mismo campo por eso fuciona
+
+	if conforme==True and tipo_usuario=='NAT': #si es un denunciante envia a inicio
+			return render(request,'Inicio/index.html') 
+
+	elif conforme==True and tipo_usuario=='PNP':#si es policia lo envia alas opciones
+			return render(request,'Inicio/opciones.html')
+	else:
+		#compueva si existe un post proveniente del formularo cambiar clave
+		if request.method=='POST':
+			#bsuca y edita la clave del usuario
+			usuario_nombre=request.user.username 						#
+			usuario=User.objects.get(username__exact=usuario_nombre)#
+			nueva_clave=request.POST['rpass']#
+			usuario.set_password(nueva_clave)#
+			#busca el agente apartir del codigo del usuario
+			if tipo_usuario=='NAT': Invitado=Denunciante.objects.filter(USUARIO=usuario_id)
+			if tipo_usuario=='PNP': Invitado=Agente.objects.filter(USUARIO=usuario_id)
+			for a in Invitado:
+				a.CONFORME=True
+				#guarda el agente como conforme
+				a.save()
+			#guarda la nueva clave del usuario
+			usuario.save()
+			if tipo_usuario=='NAT':
+				return render(request,'Inicio/index.html') #si es denunciante lo envia al index
+			else:
+				return render(request,'Inicio/opciones.html')#si es policia lo redirecciona alas opciones policiales
+		else:
+			return render(request,'Inicio/editarclave.html')
+
+
+
+
+if request.POST:
+		form=ChangePass(user=request.user, data=request.POST)
+		if form.is_valid():
+			#prueba
+			if tipo_usuario=='NAT': Invitado=Denunciante.objects.filter(USUARIO=usuario_id)
+			if tipo_usuario=='PNP': Invitado=Agente.objects.filter(USUARIO=usuario_id)
+			for a in Invitado:
+				a.CONFORME=True
+				#guarda el invitado como conforme
+				a.save()
+
+			#finPrueba
+			print 'conforme es un humano'
+			form.save()
+
+			if tipo_usuario=='NAT':
+				return render(request,'Inicio/index.html') #si es denunciante lo envia al index
+			else:
+				return render(request,'Inicio/opciones.html')#si es policia lo redirecciona alas opciones policiales
+		else:
+			print 'Algo hiciste mal'
+	else:
+
+		form=ChangePass(request)
+		return render_to_response('Inicio/cambiar.html',locals(),context_instance=RequestContext(request))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#def Cambiar(request):
+#	if request.POST:
+#		form=ChangePass(user=request.user, data=request.POST)
+#		if form.is_valid():
+#			print 'conforme es un humano'
+#			form.save()
+#		else:
+#			print 'Algo hiciste mal'
+#	else:		
+#		form=ChangePass(request)
+#	return render_to_response('Inicio/cambiar.html',locals(),context_instance=RequestContext(request))
+
+def MiCaptcha():
+    ret = u''
+    dic=['Peru','PNP','respeto','honor','gloria','leal','DIGNIDAD','verdad','honra','rectitud','justo',
+    	'virtud','bondad','digno','integro','ayudar','cuidar','acoger','apoyar','cortez','humildad','']
+    #for i in range(3):
+    #    ret += str(random.randint(0,9))
+    ret=random.choice(dic)
+    return ret, ret		
+
+		
+
+	
+
+
+			
+
+	
+		
+
